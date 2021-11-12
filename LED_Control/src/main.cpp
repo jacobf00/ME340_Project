@@ -37,6 +37,27 @@ void setAltLEDS(CRGB::HTMLColorCode color1, CRGB::HTMLColorCode color2, int dly)
   delay(dly);
 }
 
+void setLightning(CRGB::HTMLColorCode color1, CRGB::HTMLColorCode color2, int dly, int num_lit, bool ret=false) {
+  for(int i = 0; i < NUM_LEDS; i++) {
+    for(int j = 0; j < num_lit; j++) {
+      if(i + j < NUM_LEDS) {
+        if (j % 2 == 0)
+        {
+          leds[i + j] = color1;
+        }
+        else
+        {
+          leds[i + j] = color2;
+        }
+      }
+    }
+    FastLED.show();
+    delay(dly);
+    fill_solid(leds, NUM_LEDS, CRGB::Black);
+    FastLED.show();
+  }
+}
+
 void setup() {
   // put your setup code here, to run once:
   //initialize builtin LED
@@ -60,7 +81,9 @@ void loop() {
   //     leds[i] = CRGB::Blue;
   //   }
   // }
-  int dly = 1000;
-  setAltLEDS(CRGB::LightBlue,CRGB::Blue,dly);
+  int dly = 30;
+  int numLit = 5;
+  // setAltLEDS(CRGB::LightBlue,CRGB::Blue,dly);
+  setLightning(CRGB::LightBlue,CRGB::Blue,dly,numLit);
 
 }
