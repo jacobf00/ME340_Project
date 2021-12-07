@@ -69,9 +69,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  // choose alt or lightning pattern by commenting out undesired pattern
   int dly = 30;
   int numLit = 5;
-  // setAltLEDS(CRGB::LightBlue,CRGB::Blue,dly);
-  setLightning(CRGB::LightBlue,CRGB::Blue,dly,numLit);
+  setAltLEDS(CRGB::LightBlue,CRGB::Blue,dly);
+  //setLightning(CRGB::LightBlue,CRGB::Blue,dly,numLit);
 
 }
